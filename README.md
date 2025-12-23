@@ -121,7 +121,8 @@ The initial `<` character specifies the Little-Endian byte order.
 - `created`,`Q`= 8 bytes: 8-byte timestamp for file creation.
 - `reserved1`,`12s`= 12 bytes: final padding to make sure the file entry is 64 bytes in total
 
-## Commands
+## File System Commands
+### Python Commands
 #### `mkfs()`: Create a new file
 
 command:
@@ -299,3 +300,49 @@ This function defragments the file system. This operation removes all files mark
 - For the algorithm responsible for calling the correct method, we first did a classic if, elif else approach, but that seemed to hard coded. We then tried intro-spection but it resultet always in errors. Thereby, we decided to create a dictionary that stores the command names and their callables. Like this, one can index the dictionary for the right method.
 - We added a check that if there are more than 3 arguments, it means that it's a function that takes a text file and is thus called accordingly. Otherwise. it is called with no arguments. After the writing of the code, we also throught that \*args could be used for this, but we did not end up using it
 
+### Java Commands
+#### `mkfs()`: Create a new file
+```bash
+java zvfs mkfs <filesystem>
+```
+
+#### `gifs()`: Get info about a file
+```bash
+java zvfs gifs <filesystem>
+```
+
+#### `addfs()`: Add file
+
+```bash
+java zvfs addfs <filesystem> <file_to_add>
+```
+
+#### `getfs()`: Extract file from filesystem
+
+```bash
+java zvfs getfs <file system file> <file to extract>
+```
+
+#### `rmfs()`: Mark file as deleted
+
+```bash
+java zvfs rmfs <file system file> <file in filesystem>
+```
+
+#### `lsfs()`: List files
+
+```bash
+java zvfs lsfs <file system file>
+```
+
+#### `catfs()`: Print file contents
+
+```bash
+java zvfs catfs <file system file> <file in filesystem>
+```
+
+#### `dfrgfs()`: Defragment file system
+
+```bash
+java zvfs dfrgfs <file system file>
+```
